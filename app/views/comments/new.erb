@@ -1,0 +1,20 @@
+<% if session[:form_error] %>
+  <% session[:form_error].each do |error| %>
+    <p><%= error %></p>
+  <% end %>
+<% session[:form_error] = nil; end %>
+
+
+<% if @question %>
+  <form method="post" action="/questions/new_comment">
+    <input type="textbox" placeholder="Enter your comment" name="comment_body">
+    <input type="hidden" name="question_id" value="<%= @question.id %>">
+    <input type="submit" value="Submit Comment">
+  </form>
+<% elsif @answer %>
+  <form method="post" action="/answers/new_comment">
+    <input type="textbox" placeholder="Enter your comment" name="comment_body">
+    <input type="hidden" name="answer_id" value="<%= @answer.id %>">
+    <input type="submit" value="Submit Comment">
+  </form>
+<% end %>
