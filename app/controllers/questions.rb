@@ -26,9 +26,12 @@ end
 
 get '/questions/:id' do
   @question = Question.find_by(id: params[:id])
+
   if @question
+    @question.view_count += 1
+    @question.save
     erb :'questions/show'
   else
-    halt(404, "Question not found")
+    halt(404, "404!!!!!! Question not found")
   end
 end
