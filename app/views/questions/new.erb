@@ -1,0 +1,9 @@
+<% if session[:form_error] %>
+  <p><%= session[:form_error] %></p>
+<% session[:form_error] = nil; end %>
+
+<form method="post" action="/questions">
+  <input type="text" placeholder="title" name="question[title]">
+  <input type="textbox" placeholder="Enter your question" name="question[question_body]">
+  <input type="submit" value="Submit Question">
+</form>
