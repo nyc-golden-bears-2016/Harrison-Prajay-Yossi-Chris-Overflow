@@ -1,4 +1,9 @@
 <h1>All Questions:</h1>
-<% @questions.all do |q| %>
-  <p><%= q.body %></p>
+<% @questions.all.each do |q| %>
+  <h3><a href="/question/"<%= q.id %>>q.title</a></h3>
+  <p>Views: <%= q.view_count %></p>
+  <p>Author: <%= q.user %></p>
+  <p>Answers: <%= q.answers.count %></p>
+  <br>
 <% end %>
+

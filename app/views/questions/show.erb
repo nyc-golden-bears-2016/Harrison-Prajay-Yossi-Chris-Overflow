@@ -1,0 +1,28 @@
+<p><%= session[:invalid_answer] %></p>
+<% session[:invalid_answer] = nil; end %>
+<h1>@question.title</h1>
+<p>Views: <%= @question.view_count %></p>
+<p>Author: <%= @question.user %></p>
+<% if @question.answers.empty? %>
+  <p>Be the first to answer this question.</p>
+<% else %>
+  <% @question.answers.each do |answer| %>
+    <form>
+      <button type="submit" name="upvote" value="upvote" class="upvote"></button>
+    </form>
+    <p><%= answer.votes.count %></p>
+    <form>
+      <button type="submit" name="upvote" value="upvote" class="upvote"></button>
+    </form>
+    <p><%= answer.answer_body %></p>
+    <p><%= answer.user.username %></p>
+    <br>
+  <% end %>
+<% end %>
+
+<h2>Your Answer</h2>
+<form method="post" action="/answers">
+  <input type="textbox" placeholder="Enter your answer" name="answer[answer_body]">
+  <input type="hidden" name="answer[question_id]" value="<%= @question.id %>">
+  <input type="submit" value="Submit Question">
+</form>

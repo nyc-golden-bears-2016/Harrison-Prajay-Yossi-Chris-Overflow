@@ -4,6 +4,8 @@
 <% if session[:register_message] %>
   <p><%= session[:register_message] %></p>
 <% session[:register_message] = nil; end %>
+<p><%= session[:new_post_message] %></p>
+<% session[:new_post_message] = nil; end %>
 
 <h1>Login</h1>
 <form action="/login" method="post">
