@@ -19,14 +19,14 @@
 </head>
 <body>
 
-  <nav>
+  <nav id="standard">
     <header>GameOverFlow</header>
     <ul>
     <% if current_user %>
         <li><%= current_user.username %></li>
         <li><a href="/">Home</a></li>
         <li><a href="/logout">Logout</a></li>
-        <li><a href="/profile">Profile</li>
+        <li><a href="/profile">Profile</a></li>
       <% else %>
         <li><a href="/">Home</a></li>
         <li><a href="/login">Login</a></li>

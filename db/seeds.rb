@@ -13,7 +13,7 @@ end
 
 halo_questions = ["What does the master chief actually look like?", "Is Cortana single?", "How do I join the flood?", "Where is the third ring?", "Is anyone having trouble with their needler?"]
 
-zelda_questions = ["Who actually plays the ocarina?", "Does anyone have any paintings of Ganondorf for sale?", "How do I beat the water temple?" "Are there any cheat codes for Wind Waker?", "Which Zelda game is the highest rated?"]
+zelda_questions = ["Who actually plays the ocarina?", "Does anyone have any paintings of Ganondorf for sale?", "How do I beat the water temple?", "Are there any cheat codes for Wind Waker?", "Which Zelda game is the highest rated?"]
 
 pokemon_questions = ["What is Ash's favorite color?", "How many Pokeballs can Brock carry at one time?", "Where can I find Mewtwo?", "Does anyone know how to change the color of my Pokeballs?", "In which Brooklyn neighborhood can I find Psyduck?"]
 

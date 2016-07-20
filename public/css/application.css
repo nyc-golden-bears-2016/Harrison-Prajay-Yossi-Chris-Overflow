@@ -1,9 +1,5 @@
-body {
-  background-color: ghostwhite;
-}
-
 nav {
-  background-color: slategrey;
+  background-color: #242729;
   font-size: 1.2em;
   text-align: right;
   padding-right: 25px;
@@ -11,12 +7,16 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: white;
 }
+
+
 
 nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  color: white;
 }
 
 nav li {
@@ -27,15 +27,77 @@ nav li {
 
 nav li a {
   text-decoration: none;
-  color: black;
+  color: white;
+}
+
+.box {
+  border: 1px solid #848d95;
+  display: inline-block;
+  width: 1150px;
+  margin: 1em;
+
+}
+
+.container {
+  border: 3px;
+  width: 1200px;
+  margin:auto;
 }
 
 
+.box li {
+  list-style-type: none;
+  display: inline-block;
+}
+
+.author {
+  border: 1px;
+}
+
+.answer {
+  border: 1px;
+  color: #848d95;
+}
+
+.view {
+  border: 1px;
+  color: #848d95;
+}
+
+.question a {
+  border: 1px;
+  color: blue;
+  text-decoration: none;
+
+}
 
 
+.page_title {
+  display: inline-block;
+  margin-left: 325px;
+}
 
+#subheader {
+  background-color: white;
+  color: #848d95;
+}
 
+.tabs {
+  color: #848d95;
+}
 
+#standard {
+  margin-bottom: 100px;
+}
+
+.count {
+  color: #848d95;
+  text-align: center;
+}
+
+#title {
+  color: #242729;
+}
 
 
 
