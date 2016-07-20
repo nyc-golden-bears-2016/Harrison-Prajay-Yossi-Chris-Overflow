@@ -9,8 +9,8 @@
 
 ### User Stories:
 
-* Users will be able to post a question about my game.
-* Users will be able to view answers to my question.
+* Users will be able to post a question about a game.
+* Users will be able to view answers to a question.
 * Readers will be able to search for questions.
 * Users will be able to vote on answers to questions.
 * Users will be able to comment on questions and answers.
