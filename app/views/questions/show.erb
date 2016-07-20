@@ -1,6 +1,9 @@
 <% if session[:invalid_answer] %>
   <p><%= session[:invalid_answer] %></p>
 <% session[:invalid_answer] = nil; end %>
+<% if session[:vote_error] %>
+  <p><%= session[:vote_error] %></p>
+<% session[:vote_error] = nil; end %>
 <h1><%= @question.title %></h1>
 <p><%= @question.question_body %></p>
 <p>Views: <%= @question.view_count %></p>
@@ -10,12 +13,14 @@
   <p>Be the first to answer this question.</p>
 <% else %>
   <% @question.answers.each do |answer| %>
-    <form>
+    <form action="/upvote/answers" method="post">
       <input type="submit" name="upvote" value="upvote" class="upvote"></input>
+      <input type="hidden" name="answer_id" value="<%= answer.id %>">
     </form>
-    <p><%= answer.votes.count %></p>
-    <form>
+    <p><%= count_votes(answer) %></p>
+    <form action="/downvote/answers" method="post">
       <input type="submit" name="downvote" value="downvote" class="downvote"></input>
+      <input type="hidden" name="answer_id" value="<%= answer.id %>">
     </form>
     <p><%= answer.answer_body %></p>
     <p>Author: <%= answer.user.username %></p>
