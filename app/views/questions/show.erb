@@ -1,4 +1,5 @@
-<p><%= session[:invalid_answer] %></p>
+<% if session[:invalid_answer] %>
+  <p><%= session[:invalid_answer] %></p>
 <% session[:invalid_answer] = nil; end %>
 <h1>@question.title</h1>
 <p>Views: <%= @question.view_count %></p>

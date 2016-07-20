@@ -16,11 +16,11 @@ post '/questions' do
   @question = Question.new(params[:question])
   @question.user_id = session[:id]
 
-   if @entry.save
-    redirect "/question/#{@question.id}"
+   if @question.save
+    redirect "/questions/#{@question.id}"
   else
-    session[:form_error] = @entry.errors.full_messages
-    redirect "/question/new"
+    session[:form_error] = @question.errors.full_messages
+    redirect "/questions/new"
   end
 end
 
