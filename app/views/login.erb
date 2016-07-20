@@ -1,0 +1,18 @@
+
+<p><a href="/">home</a></p>
+<% if session[:invalid_login] %>
+  <p><%= session[:invalid_login] %></p>
+<% session[:invalid_login] = nil; end %>
+<% if session[:register_message] %>
+  <p><%= session[:register_message] %></p>
+<% session[:register_message] = nil; end %>
+
+<h1>Login</h1>
+<form action="/login" method="post">
+  <p>Email</p>
+  <input type="text" name="email" value="">
+  <p>Password</p>
+  <input type="password" name="password" value="">
+  <br>
+  <input type="submit" value="login">
+</form>
