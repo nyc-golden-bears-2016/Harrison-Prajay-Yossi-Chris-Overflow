@@ -1,0 +1,17 @@
+<p><a href="/">home</a></p>
+<% if session[:errors] %>
+  <% session[:errors].each do |error_msg| %>
+    <p><%= error_msg %></p>
+  <% end %>
+<% session[:errors] = nil; end %>
+<h1>Register</h1>
+<form action="/register" method="post">
+  <p>Username</p>
+  <input type="text" name="user[username]" value="">
+  <p>Email</p>
+  <input type="text" name="user[email]" value="">
+  <p>Password</p>
+  <input type="password" name="password" value="">
+  <br>
+  <input type="submit" value="register">
+</form>
