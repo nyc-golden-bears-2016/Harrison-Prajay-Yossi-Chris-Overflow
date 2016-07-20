@@ -15,18 +15,25 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
 
-  <title></title>
+  <title>Game Overflow</title>
 </head>
 <body>
-  <p><a href="/">HOME</a></p>
-  <% if current_user %>
-    <p><%= current_user.username %></p>
-    <p><a href="/logout">logout</a>
-    <p><a href="/profile">profile</a>
-  <% else %>
-    <p><a href="/login">login</a></p>
-    <p><a href="/register">register</a></p>
-  <% end %>
+
+  <nav>
+    <header>GameOverFlow</header>
+    <ul>
+    <% if current_user %>
+        <li><%= current_user.username %></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/logout">Logout</a></li>
+        <li><a href="/profile">Profile</li>
+      <% else %>
+        <li><a href="/">Home</a></li>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li>
+        </ul>
+    <% end %>
+  </nav>
   <%= yield %>
 </body>
 </html>
