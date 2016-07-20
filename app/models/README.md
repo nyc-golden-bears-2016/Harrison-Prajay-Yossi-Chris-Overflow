@@ -16,5 +16,3 @@
 * Users will be able to comment on questions and answers.
 * Users will be able to select the best answer to their question.
 * Users will be able to vote up or down one time per question/answer.
-
-
