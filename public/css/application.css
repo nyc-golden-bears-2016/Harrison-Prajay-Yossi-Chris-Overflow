@@ -10,8 +10,6 @@ nav {
   color: white;
 }
 
-
-
 nav ul {
   list-style-type: none;
   margin: 0;
@@ -44,7 +42,6 @@ nav li a {
   margin:auto;
 }
 
-
 .box li {
   list-style-type: none;
   display: inline-block;
@@ -64,13 +61,13 @@ nav li a {
   color: #848d95;
 }
 
-.question a {
-  border: 1px;
-  color: blue;
+.question_title a {
+  /*border: 1px solid;*/
+  color: #07C;
   text-decoration: none;
+  font-size: 1.5em;
 
 }
-
 
 .page_title {
   display: inline-block;
@@ -78,6 +75,7 @@ nav li a {
 }
 
 #subheader {
+  border-bottom: 1px;
   background-color: white;
   color: #848d95;
 }
@@ -97,6 +95,26 @@ nav li a {
 
 #title {
   color: #242729;
+}
+
+.question_title {
+  display: inline-block;
+  border: 1px solid;
+  width:500px;
+  text-align: center;
+}
+
+
+.test{
+  display: inline-block;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid;
+  width:200px;
 }
 
 
