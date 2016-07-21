@@ -22,13 +22,13 @@
   <nav id="standard">
     <header>GameOverFlow</header>
     <ul>
+      <li>
+        <form method="get" action="/questions/tag">
+          <input type="textbox" name="search_input" placeholder="Search by tags">
+          <input type="submit" value="Search">
+        </form>
+      </li>
     <% if current_user %>
-        <li>
-          <form method="get" action="/questions/tag">
-            <input type="textbox" name="search_input" placeholder="Search by tags">
-            <input type="submit" value="Search">
-          </form>
-        </li>
         <li><%= current_user.username %></li>
         <li><a href="/">Home</a></li>
         <li><a href="/logout">Logout</a></li>
