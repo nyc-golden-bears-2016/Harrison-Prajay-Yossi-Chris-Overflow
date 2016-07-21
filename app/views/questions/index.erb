@@ -28,6 +28,11 @@
       <div class="username">
         <li class="author"><%= q.user.username %></li>
       </div>
+      <li>
+        <% q.tags.each do |tag| %>
+          <%= tag.tag_name %>
+        <% end %>
+      </li>
       </ul>
 
     </div>
