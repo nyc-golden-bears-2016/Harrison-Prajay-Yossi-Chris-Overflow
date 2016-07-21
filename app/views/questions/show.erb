@@ -8,17 +8,21 @@
   <p><%= session[:vote_error] %></p>
 <% session[:vote_error] = nil; end %>
 
-<form action="/upvote/questions" method="post">
-  <input type="submit" name="upvote" value="" class="upvote"></input>
-  <input type="hidden" name="question_id" value="<%= @question.id %>">
-</form>
+<div class="vote_button_form">
+  <form action="/upvote/questions" method="post">
+    <input type="image" img class="vote_image" src= "/css/images/up_arrow.png" alt="submit" name="upvote" value="" class="upvote"></input>
+    <input type="hidden" name="question_id" value="<%= @question.id %>">
+  </form>
 
-<p><%= count_votes(@question) %></p>
+  <div class="vote_count">
+    <p><%= count_votes(@question) %></p>
+  </div>
 
-<form action="/downvote/questions" method="post">
-  <input type="submit" name="downvote" value="downvote" class="downvote"></input>
-  <input type="hidden" name="question_id" value="<%= @question.id %>">
-</form>
+  <form action="/downvote/questions" method="post">
+    <input type="image" img class="vote_image" src= "/css/images/down_arrow.png" alt="submit" name="downvote" value="" class="downvote"></input>
+    <input type="hidden" name="question_id" value="<%= @question.id %>">
+  </form>
+</div>
 
 <h1><%= @question.title %></h1>
 <p><%= @question.question_body %></p>

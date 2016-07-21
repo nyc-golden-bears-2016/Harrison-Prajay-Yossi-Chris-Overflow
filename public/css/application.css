@@ -124,7 +124,7 @@ nav li a {
 }
 
 
-.upvote {
+/*.upvote {
   width:0;
   height:0;
   border-left: 5px solid transparent;
@@ -133,7 +133,7 @@ nav li a {
   border-bottom: 10px solid black;
   border-top:transparent;
   padding-top:0;
-}
+}*/
 
 .downvote {
   width:0;
@@ -154,7 +154,7 @@ nav li a {
 }
 
 #login_form {
-  border: 1px solid #848d95 ;
+  border: 1px solid #848d95;
   width: 270px;
   padding:15px;
   margin: auto;
@@ -163,7 +163,7 @@ nav li a {
 }
 
 #register_form {
-  border: 1px solid #848d95 ;
+  border: 1px solid #848d95;
   width: 270px;
   padding:15px;
   margin: auto;
@@ -172,8 +172,30 @@ nav li a {
 }
 
 
+.vote_button_form {
+  display: inline-block;
+  border: 1px ;
+  width: 35px;
+}
 
+.vote_image {
+  border: 1px ;
+  max-width: 35px;
+  min-width: 35px;
+  margin: auto;
+}
 
+.vote_count {
+  max-width: 10px;
+  margin: auto;
+  font-size: 1.2em;
+  color: #848d95;
+}
+
+.vote_count p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
 
 
 
