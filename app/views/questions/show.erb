@@ -61,14 +61,17 @@
 
       </div>
 
-      <div class="the_author">
-        <p>Author: <%= @question.user.username %></p>
-      </div>
+
 
       <h4>Question Comments</h4>
+    <div class="comment-to-question">
       <% @question.comments.each do |comment| %>
       <p><%= comment.comment_body %> - <%= comment.user.username %></p>
       <% end %>
+    </div>
+      <div class="the_author">
+        <p>Author: <%= @question.user.username %></p>
+      </div>
       <a href="/questions/<%= @question.id %>/new_comment">add comment</a>
 
 

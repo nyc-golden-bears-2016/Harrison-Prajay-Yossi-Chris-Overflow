@@ -214,6 +214,7 @@ nav li a {
 
 .question_content {
   display:inline-block;
+  margin-left: 15px;
   border:1px;
   width:900px;
 }
@@ -232,9 +233,14 @@ nav li a {
 
 
 .the_author {
-
+  float: right;
 }
 
+.comment-to-question {
+  border: 1px solid;
+  width: 900px;
+  margin-left: 85px;
+}
 
 
 
