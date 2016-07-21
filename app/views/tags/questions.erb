@@ -14,6 +14,11 @@
       <div class="question_title">
         <li><a href="/questions/<%= q.id %>"><%= q.title %></a></li>
       </div>
+      <li>
+        <% q.tags.each do |tag| %>
+          <%= tag.tag_name %>
+        <% end %>
+      </li>
     </ul>
 
   </div>
