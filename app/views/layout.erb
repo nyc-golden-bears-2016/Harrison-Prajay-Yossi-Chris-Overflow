@@ -22,6 +22,12 @@
   <nav id="standard">
     <header> <a href="/"  id="header_button"> GameOverflow</a></header>
     <ul>
+      <li>
+        <form method="get" action="/questions/tag">
+          <input type="textbox" name="search_input" placeholder="Search by tags">
+          <input type="submit" value="Search">
+        </form>
+      </li>
     <% if current_user %>
         <li><%= current_user.username %></li>
         <li><a href="/">Home</a></li>

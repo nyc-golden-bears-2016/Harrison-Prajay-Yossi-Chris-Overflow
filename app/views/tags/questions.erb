@@ -1,0 +1,25 @@
+<% @questions.each do |q| %>
+  <div class="box">
+
+    <ul>
+      <!-- <li class="author"><%= q.user.username %></li> -->
+      <div class="test">
+        <div class="info">
+          <li class="answer"><div class="count">0</div>Votes</li>
+          <li class="answer"><div class="count"><%= q.answers.count %></div> Answers</li>
+          <li class="view"> <div class="count"><%= q.view_count %> </div> Views </li>
+        </div>
+      </div>
+
+      <div class="question_title">
+        <li><a href="/questions/<%= q.id %>"><%= q.title %></a></li>
+      </div>
+      <li>
+        <% q.tags.each do |tag| %>
+          <%= tag.tag_name %>
+        <% end %>
+      </li>
+    </ul>
+
+  </div>
+<% end %>

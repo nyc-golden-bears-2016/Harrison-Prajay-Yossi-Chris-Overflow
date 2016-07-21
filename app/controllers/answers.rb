@@ -38,3 +38,9 @@ post '/answers/new_comment' do
     redirect "/questions/#{answer.question.id}/new_comment"
   end
 end
+
+post "/answers/best" do
+  answer = Answer.find_by(id: params[:answer_id])
+  set_best_answer(answer)
+  redirect "/questions/#{answer.question.id}"
+end

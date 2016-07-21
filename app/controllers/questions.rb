@@ -23,15 +23,48 @@ get '/questions/new' do
 end
 
 post '/questions' do
-  @question = Question.new(params[:question])
-  @question.user_id = session[:id]
-
-   if @question.save
-    redirect "/questions/#{@question.id}"
-  else
-    session[:form_error] = @question.errors.full_messages
+  tags = params[:tags].split(" ")
+  if tags.length > 5
+    session[:tag_limit] = "You can only enter 5 tags \n You entered #{tags.length}"
     redirect "/questions/new"
+  else
+    @question = Question.new(params[:question])
+    @question.user_id = session[:id]
+    tags.each do |tag_name|
+    existing_tag = Tag.find_by({tag_name: tag_name.downcase})
+      if existing_tag
+        @question.tags << existing_tag
+      else
+        tag = Tag.new({tag_name: tag_name.downcase})
+        if tag.save
+          @question.tags << tag
+        else
+          session[:form_error] = tag.errors.full_messages
+          redirect "/questions/new"
+        end
+      end
+    end
+
+    if @question.save
+      redirect "/questions/#{@question.id}"
+    else
+      @question.tags.delete_all
+      session[:form_error] = @question.errors.full_messages
+      if session[:form_error].empty?
+        session[:form_error] = ["You had duplicate tags."]
+      end
+      redirect "/questions/new"
+    end
   end
+end
+
+get "/questions/tag" do
+  search_tags = params[:search_input].split(" ")
+  @questions = search_tags.map do |tag_name|
+    p Question.joins(:tags).where(:tags => {:tag_name => tag_name})
+  end
+  @questions = @questions.flatten.uniq
+  erb :"tags/questions"
 end
 
 get '/questions/:id' do

@@ -3,6 +3,9 @@
   <h2>Questions</h2>
   <% current_user.questions.each do |q| %>
     <h3><a href="/questions/<%= q.id %>"><%= q.title %></a></h3>
+    <% q.tags.each do |tag| %>
+      <%= tag.tag_name %>
+    <% end %>
     <p>Views: <%= q.view_count %></p>
     <p>Answers: <%= q.answers.count %></p>
     <br>
