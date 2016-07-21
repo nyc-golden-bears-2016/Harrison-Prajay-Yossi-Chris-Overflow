@@ -3,10 +3,9 @@
     <header id="title">All Questions</header>
       <ul class="tabs">
         <li>Interesting</li>
-        <li>Featured</li>
-        <li>Hot</li>
-        <li>Week</li>
-        <li>Month</li>
+        <li>Views</li>
+        <li>Answers</li>
+        <li>Votes</li>
       </ul>
   </nav>
 
@@ -15,7 +14,6 @@
     <div class="box">
 
       <ul>
-        <!-- <li class="author"><%= q.user.username %></li> -->
         <div class="test">
           <div class="info">
             <li class="answer"><div class="count">0</div>Votes</li>
@@ -27,6 +25,9 @@
         <div class="question_title">
           <li><a href="/questions/<%= q.id %>"><%= q.title %></a></li>
         </div>
+      <div class="username">
+        <li class="author"><%= q.user.username %></li>
+      </div>
       </ul>
 
     </div>

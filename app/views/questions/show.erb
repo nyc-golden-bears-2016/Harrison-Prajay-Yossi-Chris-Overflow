@@ -9,7 +9,7 @@
 <% session[:vote_error] = nil; end %>
 
 <form action="/upvote/questions" method="post">
-  <input type="submit" name="upvote" value="upvote" class="upvote"></input>
+  <input type="submit" name="upvote" value="" class="upvote"></input>
   <input type="hidden" name="question_id" value="<%= @question.id %>">
 </form>
 
