@@ -8,73 +8,164 @@
   <p><%= session[:vote_error] %></p>
 <% session[:vote_error] = nil; end %>
 
-<form action="/upvote/questions" method="post">
-  <input type="submit" name="upvote" value="upvote" class="upvote"></input>
-  <input type="hidden" name="question_id" value="<%= @question.id %>">
-</form>
 
-<p><%= count_votes(@question) %></p>
 
-<form action="/downvote/questions" method="post">
-  <input type="submit" name="downvote" value="downvote" class="downvote"></input>
-  <input type="hidden" name="question_id" value="<%= @question.id %>">
-</form>
 
-<h1><%= @question.title %></h1>
-<p><%= @question.question_body %></p>
-<p>Views: <%= @question.view_count %></p>
-<p>Author: <%= @question.user.username %></p>
+<h3 id="question_head"><%= @question.title %></h3>
+  <div class="view_content">
+    <p><span class="viewed_word" >viewed</span> <%= @question.view_count %></p>
+  </div>
 
-<hr>
+  <div class="container">
 
-<a href="/questions/<%= @question.id %>/new_comment">add comment</a>
-<h4>Question Comments</h4>
-<% @question.comments.each do |comment| %>
-  <p><%= comment.comment_body %> - <%= comment.user.username %></p>
-<% end %>
 
-<hr>
 
-<% if @question.answers.empty? %>
-  <p>Be the first to answer this question.</p>
-<% else %>
 
-  <% @question.answers.each do |answer| %>
 
-    <form action="/upvote/answers" method="post">
-      <input type="submit" name="upvote" value="upvote" class="upvote"></input>
-      <input type="hidden" name="answer_id" value="<%= answer.id %>">
-    </form>
 
-    <p><%= count_votes(answer) %></p>
 
-    <form action="/downvote/answers" method="post">
-      <input type="submit" name="downvote" value="downvote" class="downvote"></input>
-      <input type="hidden" name="answer_id" value="<%= answer.id %>">
-    </form>
 
-    <p><%= answer.answer_body %></p>
-    <p>Author: <%= answer.user.username %></p>
 
-    <hr>
 
-    <a href="/answers/<%= answer.id %>/new_comment">add comment</a>
-    <h4>Answer Comments</h4>
-    <% answer.comments.each do |comment| %>
+
+
+
+
+
+    <div class="the_question_box">
+
+      <div class='inline-everything'>
+        <div class="vote_button_form">
+
+          <form action="/upvote/questions" method="post">
+            <input type="image" img class="vote_image" src= "/css/images/up_arrow.png" alt="submit" name="upvote" value="" class="upvote"></input>
+            <input type="hidden" name="question_id" value="<%= @question.id %>">
+          </form>
+
+          <div class="vote_count">
+            <p><%= count_votes(@question) %></p>
+          </div>
+
+          <form action="/downvote/questions" method="post">
+            <input type="image" img class="vote_image" src= "/css/images/down_arrow.png" alt="submit" name="downvote" value="" class="downvote"></input>
+            <input type="hidden" name="question_id" value="<%= @question.id %>">
+          </form>
+
+        </div>
+
+
+          <div class="question_content">
+            <p><%= @question.question_body %></p>
+          </div>
+
+
+      </div>
+
+
+
+      <h4>Question Comments</h4>
+    <div class="comment-to-question">
+      <% @question.comments.each do |comment| %>
       <p><%= comment.comment_body %> - <%= comment.user.username %></p>
+      <% end %>
+    </div>
+      <div class="the_author">
+        <p>Author: <%= @question.user.username %></p>
+      </div>
+      <a href="/questions/<%= @question.id %>/new_comment">add comment</a>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="the_answers">
+    <% if @question.answers.empty? %>
+      <p>Be the first to answer this question.</p>
+    <% else %>
+
+    <% @question.answers.each do |answer| %>
+    <div class="vote_button_form">
+      <form action="/upvote/answers" method="post">
+        <input type="image" img class="vote_image" src= "/css/images/up_arrow.png" alt="submit" name="upvote" value="" class="upvote">
+        <input type="hidden" name="answer_id" value="<%= answer.id %>">
+      </form>
+
+      <div class="vote_count">
+        <p><%= count_votes(answer) %></p>
+      </div>
+
+      <form action="/downvote/answers" method="post">
+        <input type="image" img class="vote_image" src= "/css/images/down_arrow.png" alt="submit" name="downvote" value="" class="downvote"></input>
+        <input type="hidden" name="answer_id" value="<%= answer.id %>">
+      </form>
+    </div>
+
+      <p><%= answer.answer_body %></p>
+      <p>Author: <%= answer.user.username %></p>
+
+    <!--   <hr> -->
+
+      <h4>Answer Comments</h4>
+      <% answer.comments.each do |comment| %>
+        <p><%= comment.comment_body %> - <%= comment.user.username %></p>
+      <% end %>
+      <a href="/answers/<%= answer.id %>/new_comment">add comment</a>
+
+    </div>
+      <!-- <hr> -->
+
+    <% end %>
     <% end %>
 
-    <hr>
+    <h2>Your Answer</h2>
 
-  <% end %>
-<% end %>
+    <form method="post" action="/answers">
 
-<h2>Your Answer</h2>
-
-<form method="post" action="/answers">
-
-  <input type="textbox" placeholder="Enter your answer" name="answer[answer_body]">
-  <input type="hidden" name="answer[question_id]" value="<%= @question.id %>">
-  <input type="submit" value="Submit Answer">
-
-</form>
+    <textarea type="textbox" placeholder="Enter your answer" name="answer[answer_body]"></textarea>
+    <input type="hidden" name="answer[question_id]" value="<%= @question.id %>">
+    <input type="submit" value="Submit Answer">
+    </form>
+  </div>

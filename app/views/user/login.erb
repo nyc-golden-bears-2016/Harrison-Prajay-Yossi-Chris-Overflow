@@ -8,12 +8,14 @@
   <p><%= session[:new_post_message] %></p>
 <% session[:new_post_message] = nil; end %>
 
-<h1>Login</h1>
-<form action="/login" method="post">
-  <p>Email</p>
-  <input type="text" name="email" value="">
-  <p>Password</p>
-  <input type="password" name="password" value="">
-  <br>
-  <input type="submit" value="login">
-</form>
+<div id= "login_form">
+  <h1>Login</h1>
+  <form action="/login" method="post">
+    <p>Email</p>
+    <input type="text" name="email" value="">
+    <p>Password</p>
+    <input type="password" name="password" value="">
+    <br>
+    <input type="submit" value="login">
+  </form>
+</div>
