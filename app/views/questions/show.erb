@@ -49,7 +49,7 @@
 
 
 
-      <!-- <h4>Question Comments</h4> -->
+      <h4>Question Comments</h4>
     <div class="comment-to-question">
       <% @question.comments.each do |comment| %>
       <p><%= comment.comment_body %> - <%= comment.user.username %></p>
@@ -59,28 +59,31 @@
         <p>Author: <%= @question.user.username %></p>
       </div>
 
-      <div class="add_comment_link">
-        <a href="/questions/<%= @question.id %>/new_comment">add comment</a>
-      </div>
+    <div class="add_comment_link">
+      <a href="/questions/<%= @question.id %>/new_comment">add comment</a>
     </div>
 
 
-    <% if !@question.answers.empty? %>
-      <% if @question.answers.count == 1 %>
-        <h3><%= @question.answers.count %> Answer</h3>
-      <% else %>
-        <h3><%= @question.answers.count %> Answers</h3>
-      <% end %>
-    <% end %>
+    </div>
 
+
+
+
+<% if !@question.answers.empty? %>
+  <% if @question.answers.count == 1 %>
+     <h3><%= @question.answers.count %> Answer</h3>
+  <% else %>
+     <h3><%= @question.answers.count %> Answers</h3>
+  <% end %>
+<% end %>
 
 
     <% if @question.answers.empty? %>
       <p>Be the first to answer this question.</p>
     <% else %>
-
       <% best_answer = get_best_answer(@question) %>
       <% if best_answer %>
+        <div class="the_answers">
         <div class="vote_button_form">
           <form action="/upvote/answers" method="post">
             <input type="image" img class="vote_image" src= "/css/images/up_arrow.png" alt="submit" name="upvote" value="" class="upvote">
@@ -97,71 +100,76 @@
           </form>
         </div>
 
-          <p><%= best_answer.answer_body %></p>
-          <p>Author: <%= best_answer.user.username %></p>
-
-        <!--   <hr> -->
-
-          <h4>Best Answer Comments</h4>
-          <% best_answer.comments.each do |comment| %>
-            <p><%= comment.comment_body %> - <%= comment.user.username %></p>
-          <% end %>
-          <a href="/answers/<%= best_answer.id %>/new_comment">add comment</a>
-
+        <p class="question_content"><%= best_answer.answer_body %></p>
+        <div class="the_author">
+          <p><%= best_answer.user.username %></p>
         </div>
       <% end %>
 
+       <!--  <h4>Answer Comments</h4> -->
+        <% best_answer.comments.each do |comment| %>
+          <div class="comment-to-question">
+              <p><%= comment.comment_body %> - <%= comment.user.username %></p>
+          </div>
+        <% end %>
+        <div class="add_comment_link">
+          <a href="/answers/<%= best_answer.id %>/new_comment">add comment</a>
+        </div>
+      </div>
 
-
-    <% @question.answers.each do |answer| %>
+      <% @question.answers.each do |answer| %>
+      <% unless answer.best_answer == true %>
     <div class="the_answers">
-      <div class="vote_button_form">
-        <form action="/upvote/answers" method="post">
-          <input type="image" img class="vote_image" src= "/css/images/up_arrow.png" alt="submit" name="upvote" value="" class="upvote">
-          <input type="hidden" name="answer_id" value="<%= answer.id %>">
-        </form>
+        <div class="vote_button_form">
+          <form action="/upvote/answers" method="post">
+            <input type="image" img class="vote_image" src= "/css/images/up_arrow.png" alt="submit" name="upvote" value="" class="upvote">
+            <input type="hidden" name="answer_id" value="<%= answer.id %>">
+          </form>
 
-        <div class="vote_count">
-          <p><%= count_votes(answer) %></p>
+          <div class="vote_count">
+            <p><%= count_votes(answer) %></p>
+          </div>
+
+          <form action="/downvote/answers" method="post">
+            <input type="image" img class="vote_image" src= "/css/images/down_arrow.png" alt="submit" name="downvote" value="" class="downvote"></input>
+            <input type="hidden" name="answer_id" value="<%= answer.id %>">
+          </form>
         </div>
 
-
-
-        <p><%= answer.answer_body %></p>
-        <p>Author: <%= answer.user.username %></p>
-          <form action="/downvote/answers" method="post">
-             <input type="image" img class="vote_image" src= "/css/images/down_arrow.png" alt="submit" name="downvote" value="" class="downvote"></input>
-             <input type="hidden" name="answer_id" value="<%= answer.id %>">
-           </form>
-         </div>
+        <p class="question_content"><%= answer.answer_body %></p>
         <% if @question.user_id == session[:id] %>
           <form action="/answers/best" method="post">
             <input type="submit" name="best_answer" value="Set as best"></input>
             <input type="hidden" name="answer_id" value="<%= answer.id %>">
           </form>
         <% end %>
+        <div class="the_author">
+          <p><%= answer.user.username %></p>
+        </div>
 
+       <!--  <h4>Answer Comments</h4> -->
         <% answer.comments.each do |comment| %>
-           <div class="comment-to-question">
+          <div class="comment-to-question">
               <p><%= comment.comment_body %> - <%= comment.user.username %></p>
-           </div>
-         <% end %>
-         <div class="add_comment_link">
-           <a href="/answers/<%= answer.id %>/new_comment">add comment</a>
-         </div>
-       </div>
+          </div>
         <% end %>
+        <div class="add_comment_link">
+          <a href="/answers/<%= answer.id %>/new_comment">add comment</a>
+        </div>
+      </div>
+      <% end %>
+      <% end %>
     <% end %>
-  <% end %>
+
 
     <div class="answer_box">
-       <h2>Your Answer</h2>
+      <h2>Your Answer</h2>
 
-    <form method="post" action="/answers">
+      <form method="post" action="/answers">
 
-    <textarea cols="100" row="300" type="textbox" placeholder="Enter your answer" name="answer[answer_body]"></textarea>
-    <input type="hidden" name="answer[question_id]" value="<%= @question.id %>">
-    <input type="submit" value="Submit Answer">
-    </form>
+      <textarea cols="100" row="300" type="textbox" placeholder="Enter your answer" name="answer[answer_body]"></textarea><br>
+      <input type="hidden" name="answer[question_id]" value="<%= @question.id %>">
+      <input id="answer_box_button" type="submit" value="Submit Answer">
+      </form>
+    </div>
   </div>
-
