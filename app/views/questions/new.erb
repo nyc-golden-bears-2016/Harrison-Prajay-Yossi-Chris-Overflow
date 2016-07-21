@@ -1,5 +1,7 @@
 <% if session[:form_error] %>
-  <p><%= session[:form_error] %></p>
+  <% session[:form_error].each do |error| %>
+    <p><%= error %></p>
+  <% end %>
 <% session[:form_error] = nil; end %>
 
 <form method="post" action="/questions">
