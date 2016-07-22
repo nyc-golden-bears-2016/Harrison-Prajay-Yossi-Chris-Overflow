@@ -1,11 +1,11 @@
 <% if session[:invalid_login] %>
-  <p><%= session[:invalid_login] %></p>
+  <p class="error"><%= session[:invalid_login] %></p>
 <% session[:invalid_login] = nil; end %>
 <% if session[:register_message] %>
-  <p><%= session[:register_message] %></p>
+  <p class="error"><%= session[:register_message] %></p>
 <% session[:register_message] = nil; end %>
 <% if session[:new_post_message] %>
-  <p><%= session[:new_post_message] %></p>
+  <p class="error"><%= session[:new_post_message] %></p>
 <% session[:new_post_message] = nil; end %>
 
 <div id= "login_form">

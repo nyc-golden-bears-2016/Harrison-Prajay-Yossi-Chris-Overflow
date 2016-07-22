@@ -5,13 +5,24 @@ get '/questions' do
     @questions = Question.all.order(view_count: :desc)
   elsif params[:answers]
     @questions = Question.all
-    @questions.to_a.sort {|q1,q2| q2.answers.count <=> q1.answers.count }
-  elsif params[:votes]
-    @questions = Question.all
-    @questions.to_a.sort {|q1,q2| count_votes(q2) <=> count_votes(q1) }
+    # @questions.to_a.sort {|q1,q2| q2.answers.count <=> q1.answers.count }
+    @questions.to_a.sort_by! {|q| q.answers.count}
+    erb :"questions/index"
   else
     @questions = Question.all
   end
+  erb :"questions/index"
+end
+
+get '/questions/answers' do
+  int_questions = Question.all
+  @questions = int_questions.to_a.sort_by! {|q| q.answers.count}.reverse
+  erb :"questions/index"
+end
+
+get '/questions/votes' do
+  int_questions = Question.all
+  @questions = int_questions.to_a.sort_by! {|q| count_votes(q)}.reverse
   erb :"questions/index"
 end
 

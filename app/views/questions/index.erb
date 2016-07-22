@@ -4,13 +4,12 @@
       <ul class="tabs" id="home_tabs_sort">
         <li><a href="/questions?interesting=true">Interesting</a></li>
         <li><a href="/questions?views=true">Views</a></li>
-        <li><a href="/questions?answers=true">Answers</a></li>
-        <li><a href="/questions?votes=true">Votes</a></li>
+        <li><a href="/questions/answers">Answers</a></li>
+        <li><a href="/questions/votes">Votes</a></li>
       </ul>
   </nav>
 
-
-  <% @questions.all.each do |q| %>
+  <% @questions.each do |q| %>
     <div class="box">
 
       <ul>
@@ -34,7 +33,7 @@
           <%= tag.tag_name %>
         </li>
         <% end %>
-      </div
+      </div>
       </ul>
 
     </div>
