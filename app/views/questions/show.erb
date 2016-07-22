@@ -104,7 +104,6 @@
         <div class="the_author">
           <p><%= best_answer.user.username %></p>
         </div>
-      <% end %>
 
        <!--  <h4>Answer Comments</h4> -->
         <% best_answer.comments.each do |comment| %>
@@ -116,6 +115,7 @@
           <a href="/answers/<%= best_answer.id %>/new_comment">add comment</a>
         </div>
       </div>
+      <% end %>
 
       <% @question.answers.each do |answer| %>
       <% unless answer.best_answer == true %>
@@ -148,6 +148,7 @@
         </div>
 
        <!--  <h4>Answer Comments</h4> -->
+
         <% answer.comments.each do |comment| %>
           <div class="comment-to-question">
               <p><%= comment.comment_body %> - <%= comment.user.username %></p>
