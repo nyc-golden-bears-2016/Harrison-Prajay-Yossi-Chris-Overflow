@@ -1,13 +1,35 @@
+<div class="container">
 <h1><%= current_user.username %></h1>
-<% if !current_user.questions.empty? %>
-  <h2>Questions</h2>
-  <% current_user.questions.each do |q| %>
-    <h3><a href="/questions/<%= q.id %>"><%= q.title %></a></h3>
-    <% q.tags.each do |tag| %>
-      <%= tag.tag_name %>
-    <% end %>
-    <p>Views: <%= q.view_count %></p>
-    <p>Answers: <%= q.answers.count %></p>
-    <br>
-  <% end %>
-<% end %>
+ <% if !current_user.questions.empty? %>
+   <h2>Questions</h2>
+   <% current_user.questions.each do |q| %>
+   <div class="box">
+
+     <ul>
+        <div class="test">
+          <div class="info">
+            <li class="answer"><div class="count">0</div>Votes</li>
+            <li class="answer"><div class="count"><%= q.answers.count %></div> Answers</li>
+            <li class="view"> <div class="count"><%= q.view_count %> </div> Views </li>
+          </div>
+        </div>
+
+        <div class="question_title">
+          <li><a href="/questions/<%= q.id %>"><%= q.title %></a></li>
+        </div>
+      <div class="username">
+        <li class="author"><%= q.user.username %></li>
+      </div>
+      <div class="tag_container">
+        <% q.tags.each do |tag| %>
+        <li class="tag_wrapper">
+          <%= tag.tag_name %>
+        </li>
+        <% end %>
+      </div
+      </ul>
+
+   </div>
+   <% end %>
+ <% end %>
+</div>
