@@ -28,6 +28,7 @@ get '/answers/:id/new_comment' do
 end
 
 post '/answers/new_comment' do
+  p params
   answer = Answer.find_by(id: params[:answer_id])
   comment = Comment.new(comment_body: params[:comment_body], user_id: current_user.id)
   if comment.save
