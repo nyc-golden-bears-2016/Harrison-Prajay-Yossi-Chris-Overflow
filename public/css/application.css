@@ -9,6 +9,9 @@ nav {
   align-items: center;
   color: white;
 }
+nav input {
+  color: #222222;
+}
 
 nav ul {
   list-style-type: none;

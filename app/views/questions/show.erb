@@ -83,7 +83,7 @@
     <% else %>
       <% best_answer = get_best_answer(@question) %>
       <% if best_answer %>
-        <div class="the_answers">
+        <div class="the_answers best">
         <div class="vote_button_form">
           <form action="/upvote/answers" method="post">
             <input type="image" img class="vote_image" src= "/css/images/up_arrow.png" alt="submit" name="upvote" value="" class="upvote">
@@ -119,7 +119,7 @@
 
       <% @question.answers.each do |answer| %>
       <% unless answer.best_answer == true %>
-    <div class="the_answers">
+    <div class="the_answers normal">
         <div class="vote_button_form">
           <form action="/upvote/answers" method="post">
             <input type="image" img class="vote_image" src= "/css/images/up_arrow.png" alt="submit" name="upvote" value="" class="upvote">
