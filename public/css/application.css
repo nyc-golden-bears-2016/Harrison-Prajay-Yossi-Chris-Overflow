@@ -13,6 +13,7 @@ nav input {
   color: #222222;
 }
 
+
 nav ul {
   list-style-type: none;
   margin: 0;
@@ -84,9 +85,13 @@ nav li a {
 }
 
 #subheader {
-  border-bottom: 1px;
+  border-bottom: 1px solid;
+  padding-left: 0px;
+  padding-right:0px;
   background-color: white;
   color: #848d95;
+  margin-left:15px;
+  width: 1150px;
 }
 
 .tabs {
@@ -106,12 +111,6 @@ nav li a {
   color: #242729;
 }
 
-.question_title {
-  display: inline-block;
-  border: 1px ;
-  width:700px;
-  text-align: center;
-}
 
 
 .test{
@@ -165,7 +164,7 @@ nav li a {
   background:white;
 }
 
-#register_form {
+.register_form {
   border: 1px solid #848d95;
   width: 270px;
   padding:15px;
@@ -279,6 +278,72 @@ nav li a {
   background-color: #0095FF;
   color: white;
 }
+
+.ask_form {
+  border: 1px solid #848d95;
+  width: 270px;
+  padding:15px;
+  margin: auto;
+  border-radius:5px;
+  background:white;
+
+}
+
+#home_tabs_sort a {
+  color: #848d95;
+
+}
+
+.tag_wrapper {
+  border: 1px;
+  background-color: #e1ecf4;
+  color: #39739d;
+  padding: 5px;
+}
+
+
+.tag_container {
+  border:1px;
+  max-width: 700px;
+  margin:auto;
+  padding-left: 100px;
+}
+
+.question_title {
+  display: inline-block;
+  border: 1px ;
+  max-width:700px;
+  text-align: center;
+  padding-left:50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

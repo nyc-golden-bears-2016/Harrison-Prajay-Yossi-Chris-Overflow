@@ -4,9 +4,11 @@ get '/questions' do
   elsif params[:views]
     @questions = Question.all.order(view_count: :desc)
   elsif params[:answers]
-    @questions = Question.all.to_a.sort {|q1,q2| q2.answers.count <=> q1.answers.count }
+    @questions = Question.all
+    @questions.to_a.sort {|q1,q2| q2.answers.count <=> q1.answers.count }
   elsif params[:votes]
-    @questions = Question.all.to_a.sort {|q1,q2| count_votes(q2) <=> count_votes(q1) }
+    @questions = Question.all
+    @questions.to_a.sort {|q1,q2| count_votes(q2) <=> count_votes(q1) }
   else
     @questions = Question.all
   end
