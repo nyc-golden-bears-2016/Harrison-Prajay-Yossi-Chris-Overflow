@@ -1,11 +1,11 @@
 <div class="container">
   <nav id="subheader">
     <header class="title">Topics</header>
-      <ul class="tabs">
-        <li>Interesting</li>
-        <li>Views</li>
-        <li>Answers</li>
-        <li>Votes</li>
+      <ul class="tabs" id="home_tabs_sort">
+        <li><a href="/questions?interesting=true">Interesting</a></li>
+        <li><a href="/questions?views=true">Views</a></li>
+        <li><a href="/questions?answers=true">Answers</a></li>
+        <li><a href="/questions?votes=true">Votes</a></li>
       </ul>
   </nav>
 
@@ -28,11 +28,13 @@
       <div class="username">
         <li class="author"><%= q.user.username %></li>
       </div>
-      <li>
+      <div class="tag_container">
         <% q.tags.each do |tag| %>
+        <li class="tag_wrapper">
           <%= tag.tag_name %>
+        </li>
         <% end %>
-      </li>
+      </div>
       </ul>
 
     </div>

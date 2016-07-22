@@ -8,9 +8,17 @@
   <p><%= session[:tag_limit] %></p>
 <% session[:tag_limit] = nil; end %>
 
-<form method="post" action="/questions">
-  <input type="text" placeholder="Title" name="question[title]">
-  <input type="textbox" placeholder="Enter your question" name="question[question_body]">
-  <input type="textbox" placeholder="Enter your tags seperated by spaces" name="tags">
-  <input type="submit" value="Submit Question">
-</form>
+<div class="ask_form">
+  <h1>Create Post</h1>
+  <form method="post" action="/questions">
+    <p>Title</p>
+    <input type="text" name="question[title]">
+    <p>Body</p>
+    <input type="textbox" name="question[question_body]">
+    <br>
+    <p>Tags</p>
+    <input type="textbox" name="tags">
+    <br>
+    <input type="submit" value="Submit Question">
+  </form>
+</div>
