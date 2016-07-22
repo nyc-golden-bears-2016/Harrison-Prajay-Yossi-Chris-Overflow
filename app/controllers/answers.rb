@@ -32,10 +32,14 @@ post '/answers/new_comment' do
   comment = Comment.new(comment_body: params[:comment_body], user_id: current_user.id)
   if comment.save
     answer.comments << comment
-    redirect "/questions/#{answer.question.id}"
+    if !request.xhr?
+      redirect "/questions/#{answer.question.id}"
+    end
   else
-    session[:form_error] = comment.errors.full_messages
-    redirect "/questions/#{answer.question.id}/new_comment"
+    if !request.xhr?
+      session[:form_error] = comment.errors.full_messages
+      redirect "/questions/#{answer.question.id}/new_comment"
+    end
   end
 end
 
