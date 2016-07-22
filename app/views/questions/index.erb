@@ -16,7 +16,7 @@
       <ul>
         <div class="test">
           <div class="info">
-            <li class="answer"><div class="count">0</div>Votes</li>
+            <li class="answer"><div class="count"><%= count_votes(q)%></div>Votes</li>
             <li class="answer"><div class="count"><%= q.answers.count %></div> Answers</li>
             <li class="view"> <div class="count"><%= q.view_count %> </div> Views </li>
           </div>
